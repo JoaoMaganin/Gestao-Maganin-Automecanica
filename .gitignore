@@ -1,0 +1,27 @@
+cat > .gitignore << 'EOF'
+# Java
+**/target/
+**/*.class
+**/*.jar
+!**/test/**/*.jar
+
+# Maven
+**/.mvn/
+**/mvnw
+**/mvnw.cmd
+
+# Spring
+**/application-local.yml
+**/*.env
+
+# Node
+**/node_modules/
+**/dist/
+**/.next/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+**/.DS_Store
+EOF
