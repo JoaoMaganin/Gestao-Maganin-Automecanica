@@ -36,3 +36,4 @@ build/
 
 #Keys
 src/main/resources/keys
+src/main/resources/application-local.yml
