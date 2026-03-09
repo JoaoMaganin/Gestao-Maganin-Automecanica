@@ -55,4 +55,8 @@ public class User {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+    public boolean isInactive() {
+        return !Boolean.TRUE.equals(this.active);
+    }
 }

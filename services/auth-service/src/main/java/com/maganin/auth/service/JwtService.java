@@ -4,6 +4,7 @@ import com.maganin.auth.domain.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ import org.springframework.core.io.Resource;
 @Service
 public class JwtService {
 
+    @Getter
     @Value("${jwt.expiration-minutes}")
     private Long expirationMinutes;
 
@@ -60,6 +62,23 @@ public class JwtService {
 
     public UUID extractUserId(String token) {
         return UUID.fromString(validateToken(token).getSubject());
+    }
+
+    public boolean isTokenValid(String token) {
+        try {
+            validateToken(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public String extractEmail(String token) {
+        return validateToken(token).get("email", String.class);
+    }
+
+    public String extractRole(String token) {
+        return validateToken(token).get("role", String.class);
     }
 
     private PrivateKey loadPrivateKey(String path) throws Exception {
