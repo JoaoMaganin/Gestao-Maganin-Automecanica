@@ -1,4 +1,6 @@
-# GESTÃO-MAGANIN-AUTOMECÂNICA
+# ERP-MAGANIN-AUTOMECÂNICA
+
+Empoderando decisões de negócios baseadas em dados com inovação.
 
 ![Home](./assets/home.png)
 ---
