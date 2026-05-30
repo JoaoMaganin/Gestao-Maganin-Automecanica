@@ -1,0 +1,79 @@
+services:
+
+  # banco de dados
+  postgres:
+    image: postgres:16-alpine
+    container_name: maganin-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_USER}
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-databases.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - maganin-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U maganin -d maganin"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # mensageria
+  # rabbitmq:
+  #   image: rabbitmq:3.13-management-alpine
+  #   container_name: maganin-rabbitmq
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+  #     RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+  #   ports:
+  #     - "5672:5672"   # porta da aplicação
+  #     - "15672:15672" # painel de administração web
+  #   volumes:
+  #     - rabbitmq_data:/var/lib/rabbitmq
+  #   networks:
+  #     - maganin-network
+  #   healthcheck:
+  #     test: ["CMD", "rabbitmq-diagnostics", "ping"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+  # cache
+  redis:
+    image: redis:7-alpine
+    container_name: maganin-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - maganin-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # distributed tracing
+  zipkin:
+    image: openzipkin/zipkin:3
+    container_name: maganin-zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - maganin-network
+
+# persistência de dados
+volumes:
+  postgres_data:
+  rabbitmq_data:
+  redis_data:
+
+# rede interna
+networks:
+  maganin-network:
+    driver: bridge
