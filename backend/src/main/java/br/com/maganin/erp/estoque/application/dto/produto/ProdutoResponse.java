@@ -1,4 +1,4 @@
-package br.com.maganin.erp.estoque.application.dto;
+package br.com.maganin.erp.estoque.application.dto.produto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

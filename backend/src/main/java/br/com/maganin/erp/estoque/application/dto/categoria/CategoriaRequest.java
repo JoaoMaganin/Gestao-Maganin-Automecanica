@@ -1,4 +1,4 @@
-package br.com.maganin.erp.estoque.application.dto;
+package br.com.maganin.erp.estoque.application.dto.categoria;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -6,16 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoriaResponse {
+public class CategoriaRequest {
 
-    private UUID id;
+    @NotBlank
     private String nome;
     private String descricao;
-    private Boolean ativo;
 }

@@ -1,4 +1,4 @@
-package br.com.maganin.erp.estoque.application.dto;
+package br.com.maganin.erp.estoque.application.dto.movimentacao;
 
 import br.com.maganin.erp.estoque.domain.TipoMovimentacao;
 import jakarta.validation.constraints.Min;

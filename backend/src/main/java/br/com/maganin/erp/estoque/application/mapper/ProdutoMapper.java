@@ -1,7 +1,7 @@
 package br.com.maganin.erp.estoque.application.mapper;
 
-import br.com.maganin.erp.estoque.application.dto.ProdutoRequest;
-import br.com.maganin.erp.estoque.application.dto.ProdutoResponse;
+import br.com.maganin.erp.estoque.application.dto.produto.ProdutoRequest;
+import br.com.maganin.erp.estoque.application.dto.produto.ProdutoResponse;
 import br.com.maganin.erp.estoque.domain.ProdutoEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

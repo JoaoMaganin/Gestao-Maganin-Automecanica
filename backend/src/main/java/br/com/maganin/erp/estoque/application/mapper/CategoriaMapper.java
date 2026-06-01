@@ -1,7 +1,7 @@
 package br.com.maganin.erp.estoque.application.mapper;
 
-import br.com.maganin.erp.estoque.application.dto.CategoriaRequest;
-import br.com.maganin.erp.estoque.application.dto.CategoriaResponse;
+import br.com.maganin.erp.estoque.application.dto.categoria.CategoriaRequest;
+import br.com.maganin.erp.estoque.application.dto.categoria.CategoriaResponse;
 import br.com.maganin.erp.estoque.domain.CategoriaEntity;
 import org.mapstruct.Mapper;
 
