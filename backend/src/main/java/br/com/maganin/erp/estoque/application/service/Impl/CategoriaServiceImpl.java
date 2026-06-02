@@ -32,6 +32,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         }
 
         CategoriaEntity novaCategoria = categoriaMapper.toEntity(categoria);
+        novaCategoria.setAtivo(true);
         CategoriaEntity categoriaSalva = categoriaRepository.save(novaCategoria);
 
         return categoriaMapper.toResponse(categoriaSalva);

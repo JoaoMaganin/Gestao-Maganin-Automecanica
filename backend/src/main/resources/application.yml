@@ -50,5 +50,10 @@ management:
 logging:
   level:
     br.com.maganin: DEBUG
-    org.springframework.security: INFO
-    org.hibernate.SQL: DEBUG
+    org.springframework: DEBUG
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
