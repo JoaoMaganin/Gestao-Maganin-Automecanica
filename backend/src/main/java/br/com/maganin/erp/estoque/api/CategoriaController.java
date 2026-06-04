@@ -59,14 +59,14 @@ public class CategoriaController {
     }
 
     @PatchMapping("/{id}/ativar")
-    public ResponseEntity<ApiResponse<CategoriaResponse>> ativarCategoria(UUID id) {
+    public ResponseEntity<ApiResponse<CategoriaResponse>> ativarCategoria(@PathVariable UUID id) {
         CategoriaResponse categoriaAtivada = categoriaService.alterarStatus(id, true);
 
         return ResponseEntity.ok(ApiResponse.ok(categoriaAtivada, "Categoria ativada com sucesso!"));
     }
 
     @PatchMapping("/{id}/desativar")
-    public ResponseEntity<ApiResponse<CategoriaResponse>> desativarCategoria(UUID id) {
+    public ResponseEntity<ApiResponse<CategoriaResponse>> desativarCategoria(@PathVariable UUID id) {
         CategoriaResponse categoriaAtivada = categoriaService.alterarStatus(id, false);
 
         return ResponseEntity.ok(ApiResponse.ok(categoriaAtivada, "Categoria desativada com sucesso!"));
