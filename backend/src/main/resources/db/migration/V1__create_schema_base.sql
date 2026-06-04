@@ -9,6 +9,17 @@ CREATE TABLE categorias (
     updated_at  TIMESTAMP    NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE fornecedores (
+    id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    nome        VARCHAR(100) NOT NULL UNIQUE,
+    cnpj        VARCHAR(14) NOT NULL UNIQUE,
+    telefone     VARCHAR(11) UNIQUE,
+    email       VARCHAR(150) UNIQUE,
+    ativo       BOOLEAN      NOT NULL DEFAULT TRUE,
+    created_at  TIMESTAMP    NOT NULL DEFAULT NOW(),
+    updated_at  TIMESTAMP    NOT NULL DEFAULT NOW()
+);
+
 CREATE TABLE produtos (
     id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     codigo          VARCHAR(50)    NOT NULL UNIQUE,
@@ -20,6 +31,7 @@ CREATE TABLE produtos (
     estoque_minimo  INTEGER        NOT NULL DEFAULT 0,
     unidade         VARCHAR(20)    NOT NULL DEFAULT 'UN',
     categoria_id    UUID           REFERENCES categorias(id),
+    fornecedor_id   UUID           REFERENCES fornecedores(id),
     ativo           BOOLEAN        NOT NULL DEFAULT TRUE,
     created_at      TIMESTAMP      NOT NULL DEFAULT NOW(),
     updated_at      TIMESTAMP      NOT NULL DEFAULT NOW()
@@ -39,3 +51,4 @@ CREATE TABLE movimentacoes (
 CREATE INDEX idx_produtos_categoria    ON produtos(categoria_id);
 CREATE INDEX idx_produtos_ativo        ON produtos(ativo);
 CREATE INDEX idx_movimentacoes_produto ON movimentacoes(produto_id);
+CREATE INDEX idx_produtos_fornecedor ON produtos(fornecedor_id);

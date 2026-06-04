@@ -1,5 +1,6 @@
 package br.com.maganin.erp.estoque.domain;
 
+import br.com.maganin.erp.cadastros.domain.FornecedorEntity;
 import br.com.maganin.erp.shared.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -52,4 +53,8 @@ public class ProdutoEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MovimentacaoEntity> movimentacoes = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fornecedor_id")
+    private FornecedorEntity fornecedor;
 }
