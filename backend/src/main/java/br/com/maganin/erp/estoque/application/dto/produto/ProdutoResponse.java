@@ -27,7 +27,7 @@ public class ProdutoResponse {
 
     /*
       classe estática interna — existe só para carregar as informações de categoria dentro do response do produto.
-      No frontend você vai conseguir mostrar o nome da categoria na tabela sem precisar de uma segunda requisição.
+      No frontend mostra o nome da categoria na tabela sem precisar de uma segunda requisição.
     */
     @Getter
     @Setter

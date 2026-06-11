@@ -5,6 +5,7 @@ import br.com.maganin.erp.estoque.application.dto.produto.ProdutoResponse;
 import br.com.maganin.erp.estoque.domain.ProdutoEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public interface ProdutoMapper {
@@ -15,4 +16,6 @@ public interface ProdutoMapper {
 
     @Mapping(target = "categoria", ignore = true)
     ProdutoEntity toEntity(ProdutoRequest request);
+
+    void updateEntityFromRequest(ProdutoRequest request, @MappingTarget ProdutoEntity entity);
 }

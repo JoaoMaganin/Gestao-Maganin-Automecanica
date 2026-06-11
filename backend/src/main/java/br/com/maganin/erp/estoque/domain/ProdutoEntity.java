@@ -23,7 +23,7 @@ public class ProdutoEntity extends BaseEntity {
     @Column(nullable = false, unique = true, length = 50)
     private String codigo;
 
-    @Column(nullable = false, unique = true, length = 150)
+    @Column(nullable = false, length = 150)
     private String nome;
 
     @Column(columnDefinition = "TEXT")
@@ -36,10 +36,16 @@ public class ProdutoEntity extends BaseEntity {
     private BigDecimal precoVenda;
 
     @Column(nullable = false)
-    private int quantidade = 0;
+    private Integer quantidade = 0;
 
     @Column(name = "estoque_minimo", nullable = false)
-    private int estoqueMinimo = 0;
+    private Integer estoqueMinimo = 0;
+
+    @Column(name = "margem_lucro", precision = 5, scale = 2)
+    private BigDecimal margemLucro;
+
+    @Column(name = "preco_custo_medio", precision = 10, scale = 2)
+    private BigDecimal precoCustoMedio;
 
     @Column(nullable = false, length = 20)
     private String unidade = "UN";
